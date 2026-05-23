@@ -11,6 +11,7 @@ class App:
         self.root.title(app_name)
         self.root.state("zoomed")
         self.root.configure(bg=APP_BG_CLR)
+        self.user = None
 
         #This is a container-frame that will hold all the pages.
         self.container = tk.Frame(self.root, bg=APP_BG_CLR)
@@ -32,3 +33,7 @@ class App:
     #This method will switch to the given screen within the container.
     def show_screen(self, screen_name):   
         self.screens[screen_name].tkraise()
+
+    #To get the current user's information, in case we need it
+    def current_user(self):
+        return self.user
