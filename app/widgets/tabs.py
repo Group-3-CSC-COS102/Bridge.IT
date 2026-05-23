@@ -8,6 +8,7 @@ def create_tabs(parent, app, active_tab):
 
     tabs = [
         ("home", "Home"),
+        ("lessons", "Basics of AI")
     ]
 
     for name, label in tabs:
@@ -27,5 +28,6 @@ def create_tabs(parent, app, active_tab):
             activeforeground=BTN_TXT_CLR,
             relief="flat",
             padx=10,
-            pady=5
-        ).pack(side="left", padx=(0, 10))
+            pady=5,
+            command=lambda n=name: app.show_screen(n)
+        ).pack(side="left")
