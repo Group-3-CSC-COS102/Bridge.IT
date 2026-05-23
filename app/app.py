@@ -2,6 +2,7 @@ import tkinter as tk
 
 from app.themes import APP_BG_CLR
 from app.screens.auth import AuthScreens
+from app.screens.home import HomeScreen
 
 class App:
     def __init__(self, app_name, root):
@@ -20,6 +21,7 @@ class App:
 
         #App Screens get created and process starts
         AuthScreens(self, self.container, self.app_name)
+        HomeScreen(self, self.container)
         self.show_screen("start")
         self.root.after(2500, lambda: self.show_screen("welcome"))
 
