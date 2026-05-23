@@ -4,6 +4,7 @@ from app.themes import APP_BG_CLR
 from app.screens.auth import AuthScreens
 from app.screens.home import HomeScreen
 from app.screens.lessons import LessonsScreens
+from app.screens.tools import ToolsScreens
 
 class App:
     def __init__(self, app_name, root):
@@ -24,6 +25,7 @@ class App:
         AuthScreens(self, self.container, self.app_name)
         HomeScreen(self, self.container, self.app_name)
         LessonsScreens(self, self.container)
+        ToolsScreens(self, self.container)
         self.show_screen("start")
         self.root.after(2500, lambda: self.show_screen("welcome"))
 

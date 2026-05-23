@@ -8,7 +8,8 @@ def create_tabs(parent, app, active_tab):
 
     tabs = [
         ("home", "Home"),
-        ("lessons", "Basics of AI")
+        ("lessons", "Basics of AI"),
+        ("tools", "AI Tools")
     ]
 
     for name, label in tabs:
