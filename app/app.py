@@ -22,7 +22,7 @@ class App:
 
         #App Screens get created and process starts
         AuthScreens(self, self.container, self.app_name)
-        HomeScreen(self, self.container)
+        HomeScreen(self, self.container, self.app_name)
         self.show_screen("start")
         self.root.after(2500, lambda: self.show_screen("welcome"))
 
