@@ -6,7 +6,7 @@ Bridge.IT is an AI awareness and information system designed to help users under
 
 ## Prerequisites
 - Python, installed on your system
-- Internet connection (optional, only required for AI assistnat features)
+- Internet connection (optional, only required for AI assistant features)
 
 ---
 
