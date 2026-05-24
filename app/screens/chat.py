@@ -18,7 +18,7 @@ class ChatScreen:
         self.client = None  # Initialised lazily so a missing key doesn't crash the app
         self.create_chat_screen()
 
-    def _get_client(self):
+    def get_client(self):
         """Return a Groq client, or None if the API key is missing/invalid."""
         if self.client is not None:
             return self.client
@@ -116,7 +116,7 @@ class ChatScreen:
         self.chat_display.config(state="disabled")
 
     def send_message(self):
-        if not self._get_client():
+        if not self.get_client():
             messagebox.showerror(
                 "No API Key",
                 "No API key was found.\n\n"
@@ -138,7 +138,7 @@ class ChatScreen:
 
     def get_ai_response(self):
         try:
-            response = self._get_client().chat.completions.create(
+            response = self.get_client().chat.completions.create(
                 model="llama-3.3-70b-versatile",
                 messages=[
                     {
