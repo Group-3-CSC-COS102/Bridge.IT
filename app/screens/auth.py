@@ -125,7 +125,7 @@ class AuthScreens:
             messagebox.showerror("Error", "Passwords do not match.")
             return
 
-        status, msg, self.app.user = signup(name, username, password)
+        status, msg = signup(name, username, password)
         if status:
             messagebox.showinfo("Success", msg)
             self.clear_entries(self.signup_name, self.signup_username,
@@ -167,7 +167,7 @@ class AuthScreens:
             messagebox.showerror("Error", "Please fill in all fields.")
             return
 
-        status, msg, self.app.user = login(username, password)
+        status, msg = login(username, password)
         if status:
             messagebox.showinfo("Success", msg)
             self.clear_entries(self.login_username, self.login_password)

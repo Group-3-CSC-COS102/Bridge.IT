@@ -30,7 +30,6 @@ class LessonsScreens:
             bg=CARD_BG_CLR, fg=APP_TXT_CLR,
             font=BODY_FONT, relief="flat",
             padx=20, pady=16,
-            insertbackground=APP_TXT_CLR,
             selectbackground=BTN_BG_CLR,
         )
         self.section_text.pack(padx=40, pady=(0, 16))

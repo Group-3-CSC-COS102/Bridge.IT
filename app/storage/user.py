@@ -27,10 +27,9 @@ def signup(name, username, password):
         return False, "Username already exists.", None
 
     user_row = pd.DataFrame([{"name": name, "username": username, "password": password}])
-    user_dict = user_row.iloc[0].to_dict()
     users_df = pd.concat([users_df, user_row], ignore_index=True)
     save_users(users_df)
-    return True, f"Welcome, {name}!", user_dict
+    return True, f"Welcome, {name}!"
 
 #Gets a user's info
 def login(username, password):
@@ -38,10 +37,6 @@ def login(username, password):
     user_row = users_df[(users_df["username"] == username) & (users_df["password"] == password)]
     if user_row.empty:
         return False, "Invalid username or password.", None
-    
-    user_dict = user_row.iloc[0].to_dict()
-    if user_row.empty:
-        return False, "Invalid username or password.", None
 
     name = user_row.iloc[0]["name"]
-    return True, f"Welcome back, {name}!", user_dict
+    return True, f"Welcome back, {name}!"
