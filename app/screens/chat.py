@@ -1,8 +1,7 @@
 import tkinter as tk
-from tkinter import scrolledtext
+from tkinter import scrolledtext, messagebox
 import threading
 import os
-from groq import Groq
 from dotenv import load_dotenv
 from app.themes import (APP_BG_CLR, CARD_BG_CLR, APP_TITLE_TXT_CLR, APP_TXT_CLR,
                         BTN_BG_CLR, BTN_TXT_CLR, ENTRY_BG_CLR, ENTRY_TXT_CLR,
@@ -16,8 +15,22 @@ class ChatScreen:
         self.app = app
         self.parent = parent
         self.conversation_history = []
-        self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+        self.client = None  # Initialised lazily so a missing key doesn't crash the app
         self.create_chat_screen()
+
+    def _get_client(self):
+        """Return a Groq client, or None if the API key is missing/invalid."""
+        if self.client is not None:
+            return self.client
+        api_key = os.getenv("GROQ_API_KEY")
+        if not api_key:
+            return None
+        try:
+            from groq import Groq
+            self.client = Groq(api_key=api_key)
+        except Exception:
+            self.client = None
+        return self.client
 
     def create_chat_screen(self):
         screen = tk.Frame(self.parent, bg=APP_BG_CLR)
@@ -103,6 +116,15 @@ class ChatScreen:
         self.chat_display.config(state="disabled")
 
     def send_message(self):
+        if not self._get_client():
+            messagebox.showerror(
+                "No API Key",
+                "No API key was found.\n\n"
+                "To enable the AI assistant, add your Groq API key to a .env file:\n"
+                "    GROQ_API_KEY=your_key_here\n\n"
+                "You can get a free key at console.groq.com."
+            )
+            return
         user_text = self.user_input.get("1.0", tk.END).strip()
         if not user_text:
             return
@@ -116,7 +138,7 @@ class ChatScreen:
 
     def get_ai_response(self):
         try:
-            response = self.client.chat.completions.create(
+            response = self._get_client().chat.completions.create(
                 model="llama-3.3-70b-versatile",
                 messages=[
                     {
