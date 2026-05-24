@@ -1,35 +1,40 @@
 import tkinter as tk
-
-from app.themes import APP_BG_CLR, APP_TXT_CLR, BTN_BG_CLR, BTN_TXT_CLR
+from app.themes import APP_BG_CLR, BORDER_CLR, ACCENT_CLR, APP_TXT_CLR, TAB_FONT
 
 def create_tabs(parent, app, active_tab):
-    frame = tk.Frame(parent, bg=APP_BG_CLR)
-    frame.pack(fill="x", pady=(10, 20))
+    wrapper = tk.Frame(parent, bg=BORDER_CLR)
+    wrapper.pack(fill="x")
+
+    frame = tk.Frame(wrapper, bg=APP_BG_CLR)
+    frame.pack(fill="x", pady=(0, 1))
 
     tabs = [
-        ("home", "Home"),
+        ("home",    "Home"),
         ("lessons", "Basics of AI"),
-        ("tools", "AI Tools"),
-        ("skills", "AI Skills")
+        ("tools",   "AI Tools"),
+        ("skills",  "AI Skills"),
     ]
 
     for name, label in tabs:
-        if name == active_tab:
-            bg = "#ffffff"
-            fg = "#000000"
-        else:
-            bg = APP_BG_CLR
-            fg = APP_TXT_CLR
+        is_active = name == active_tab
 
-        tk.Button(
-            frame, 
-            text=label, 
-            bg=bg, 
-            fg=fg,  
-            activebackground=BTN_BG_CLR,
-            activeforeground=BTN_TXT_CLR,
+        btn = tk.Button(
+            frame,
+            text=label,
+            font=TAB_FONT,
+            bg=APP_BG_CLR,
+            fg=ACCENT_CLR if is_active else APP_TXT_CLR,
+            activebackground=APP_BG_CLR,
+            activeforeground=ACCENT_CLR,
             relief="flat",
-            padx=10,
-            pady=5,
-            command=lambda n=name: app.show_screen(n)
-        ).pack(side="left")
+            bd=0,
+            padx=18,
+            pady=12,
+            cursor="hand2",
+            command=lambda n=name: app.show_screen(n),
+        )
+        btn.pack(side="left")
+
+        if is_active:
+            indicator = tk.Frame(btn, bg=ACCENT_CLR, height=2)
+            indicator.place(relx=0, rely=1.0, relwidth=1, anchor="sw")

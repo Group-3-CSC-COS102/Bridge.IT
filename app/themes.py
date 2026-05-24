@@ -1,10 +1,30 @@
-#The themes are constants used across files for UI design
-APP_BG_CLR = "#000000"
-APP_TITLE_TXT_CLR = "#AFB8CB"
-APP_TXT_CLR = "#FFFFFF"
-BTN_BG_CLR = "#190bda"
-BTN_TXT_CLR = "#FFFFFF"
-ENTRY_BG_CLR = "#353535"
-ENTRY_TXT_CLR = "#000000"
+# UI theme constants for Bridge.IT
 
-TITLE_FONT = ("Arial", 24, "bold")
+# Backgrounds
+APP_BG_CLR       = "#0A0A0F"
+CARD_BG_CLR      = "#12121A"
+ACCENT_CLR       = "#2B3BFF"
+
+# Text
+APP_TITLE_TXT_CLR = "#E0E6F0"
+APP_TXT_CLR       = "#A8B4CC"
+MUTED_TXT_CLR     = "#4A5568"
+
+# Buttons
+BTN_BG_CLR  = "#2B3BFF"
+BTN_TXT_CLR = "#FFFFFF"
+
+# Inputs
+ENTRY_BG_CLR = "#1A1A2E"
+ENTRY_TXT_CLR = "#E0E6F0"
+
+# Borders
+BORDER_CLR = "#1E2240"
+
+# Fonts
+TITLE_FONT    = ("Segoe UI", 26, "bold")
+SUBTITLE_FONT = ("Segoe UI", 13)
+LABEL_FONT    = ("Segoe UI", 10)
+BODY_FONT     = ("Segoe UI", 11)
+BTN_FONT      = ("Segoe UI", 10, "bold")
+TAB_FONT      = ("Segoe UI", 10, "bold")
