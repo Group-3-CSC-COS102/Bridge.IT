@@ -13,6 +13,7 @@ def create_tabs(parent, app, active_tab):
         ("lessons", "Basics of AI"),
         ("tools",   "AI Tools"),
         ("skills",  "AI Skills"),
+        ("chat",     "Try AI"),
         ("welcome", "Log out"),
     ]
 

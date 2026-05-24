@@ -6,6 +6,7 @@ from app.screens.home import HomeScreen
 from app.screens.lessons import LessonsScreens
 from app.screens.tools import ToolsScreens
 from app.screens.skills import SkillsScreens
+from app.screens.chat import ChatScreen 
 
 class App:
     def __init__(self, app_name, root):
@@ -28,6 +29,7 @@ class App:
         LessonsScreens(self, self.container)
         ToolsScreens(self, self.container)
         SkillsScreens(self, self.container)
+        ChatScreen(self, self.container)
         self.show_screen("start")
         self.root.after(2500, lambda: self.show_screen("welcome"))
 
