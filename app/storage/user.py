@@ -40,8 +40,6 @@ def login(username, password):
         return False, "Invalid username or password.", None
     
     user_dict = user_row.iloc[0].to_dict()
-    if user_row.empty:
-        return False, "Invalid username or password.", None
 
     name = user_row.iloc[0]["name"]
     return True, f"Welcome back, {name}!", user_dict
